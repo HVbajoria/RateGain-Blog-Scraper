@@ -10,8 +10,8 @@ import time
 from openpyxl.styles import PatternFill
 from languages import languages
 
-key = '0f0eb45d34684b2c99cf39821f4115c1'
-endpoint = 'https://api.cognitive.microsofttranslator.com/'
+key = st.secrets['TRANSLATOR_KEY']
+endpoint = st.secrets['TRANSLATOR_ENDPOINT']
 
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
@@ -35,7 +35,7 @@ def translator(text, to_lang):
 
     headers = {
         'Ocp-Apim-Subscription-Key': key,
-        'Ocp-Apim-Subscription-Region': 'centralindia',
+        'Ocp-Apim-Subscription-Region': st.secrets['TRANSLATOR_REGION'],
         'Content-type': 'application/json',
         'X-ClientTraceId': str(uuid.uuid4())
     }
