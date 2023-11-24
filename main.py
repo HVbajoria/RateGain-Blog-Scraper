@@ -10,6 +10,16 @@ import time
 from openpyxl.styles import PatternFill
 from languages import languages
 import logging
+import os, sys
+
+@st.experimental_singleton
+def installff():
+  os.system('sbase install geckodriver')
+  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+
+_ = installff()
+from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
 
 logging.basicConfig(level=logging.INFO)
 
@@ -54,13 +64,14 @@ def translator(text, to_lang):
 
 # extracting the maximum number of pages
 def extract_max_page_number(base_url):
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
+    opts = FirefoxOptions()
+    opts.add_argument("--headless")
+
 
     try:
-        driver = webdriver.Chrome(options=options)
-        driver.get(base_url)
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        browser = webdriver.Firefox(options=opts)
+        browser.get(base_url)
+        soup = BeautifulSoup(browser.page_source, 'html.parser')
 
         pagination_div = soup.find('div', class_='pagination col-xs-12')
 
@@ -87,11 +98,11 @@ def extract_max_page_number(base_url):
 
 # Extracing the title, date, image url, and likes count from the blog posts on a page
 def extract_blog_data(url, to_lang):
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
+    opts = FirefoxOptions()
+    opts.add_argument("--headless")
 
     try:
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Firefox(options=opts)
         driver.get(url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
