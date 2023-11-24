@@ -9,6 +9,9 @@ import streamlit as st
 import time
 from openpyxl.styles import PatternFill
 from languages import languages
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 key = st.secrets['TRANSLATOR_KEY']
 endpoint = st.secrets['TRANSLATOR_ENDPOINT']
@@ -238,6 +241,7 @@ def main():
             time.sleep(2)  # Simulate delay for demonstration purposes
 
             base_url = 'https://rategain.com/blog'
+            logging.info(f"Base URL: {base_url}")
             max_pages = extract_max_page_number(base_url)
 
             if max_pages is not None:
