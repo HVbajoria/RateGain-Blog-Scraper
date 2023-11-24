@@ -69,15 +69,15 @@ def extract_max_page_number(base_url):
             links = pagination_div.find_all('a', class_='page-numbers')
             # Extract numerical values from the links using regular expressions
             page_numbers = [int(re.search(r'\d+', link['href']).group()) for link in links]
-
+            logging.info(f"Page numbers: {page_numbers}")
             # Find the maximum page number
             max_page_number = max(page_numbers)
             return max_page_number
         else:
-            print("Pagination div not found.")
+            logging.info("Pagination div not found.")
             return None
     except WebDriverException as e:
-        print(f"Error: {e}")
+        logging.info(f"Error: {e}")
         return None
     finally:
         try:
