@@ -246,7 +246,6 @@ def main():
                 max_pages = 1
                 st.warning("Unable to determine the number of pages.")
 
-            max_pages=1
             pagination_urls = extract_pagination_urls(base_url, max_pages)
             all_data = {
                 'Title': [],
