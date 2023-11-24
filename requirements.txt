@@ -95,3 +95,5 @@ Wand==0.6.11
 yarl==1.9.2
 zipp==3.16.2
 azure-ai-textanalytics
+selenium
+openpyxl
