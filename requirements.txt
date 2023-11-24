@@ -97,3 +97,4 @@ zipp==3.16.2
 azure-ai-textanalytics
 selenium
 openpyxl
+chromium-browser
