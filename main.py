@@ -10,7 +10,7 @@ import time
 from openpyxl.styles import PatternFill
 from languages import languages
 import logging
-import os, sys
+import os
 
 @st.experimental_singleton
 def installff():
