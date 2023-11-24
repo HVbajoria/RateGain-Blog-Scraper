@@ -12,6 +12,13 @@ from languages import languages
 import logging
 import os
 
+# Set page configuration
+st.set_page_config(
+    page_title="Blog Data Extraction",
+    page_icon="📚",
+    layout="centered",
+)
+
 @st.cache_resource
 def installff():
   os.system('sbase install geckodriver')
@@ -193,12 +200,6 @@ def save_to_excel(data, file_path):
 
 # Streamlit application
 def main():
-    # Set page configuration
-    st.set_page_config(
-        page_title="Blog Data Extraction",
-        page_icon="📚",
-        layout="centered",
-    )
 
     hide_default_format = """ 
         <style> 
