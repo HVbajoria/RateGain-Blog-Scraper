@@ -1,4 +1,4 @@
-selenium 
+seleniumbase 
 beautifulsoup4 
 pandas 
 streamlit 
